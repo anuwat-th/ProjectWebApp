@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <title>A-Frame Project</title>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="clear-sunny-sky" src="./asset/SkyBackground.jpg" alt="sky background">
+            <img id="gass-plane" src="./asset/GrassPlane.jpg" alt="gass plane">
+
+            <img id="plane1" src="./asset/plane1.png" alt="stone">
+
+
+            <a-asset-item id="house" src="./asset/model1/scene.gltf"></a-asset-item>
+            <a-asset-item id="elephant" src="./asset/elephant/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Background Sky -->
+        <a-sky src="#clear-sunny-sky"></a-sky>
+        <!-- Gass Plane-->
+        <a-entity geometry="primitive: plane; height: 500; width: 500" position="0 0 0" rotation="-90 0 0"
+            material="shader: flat; src: url(./asset/GrassPlane.jpg); repeat: 300 300"></a-entity>
+
+        <!-- Elephant-->
+        <!-- 3D Model -->
+        <a-entity gltf-model="#house" position="0 0.1 0"></a-entity>
+        <a-text value="Elephant" color="#FFFFFF" scale="2 2 2" align="center" rotation="0 -90 0"
+            position="5 4 0"></a-text>
+        <a-entity gltf-model="#elephant" scale="2 2 2" rotation="0 -90 0" position="5 0.2 0" smooth-rotation></a-entity>
+        <a-cylinder position="6 0 0" scale="3 0.2 3" rotation="0 0 0" src="#plane1" smooth-rotation
+            animation-mixer="clip:TRS|attack;"></a-cylinder>
+        <!-- Sound -->
+        <a-sound src="./asset/sound/elephant.mp3" position="5 0.2 0" maxDistance="5" autoplay="true"
+            loop="true"></a-sound>
+
+
+        <!--Tiger-->
+
+        
+    </a-scene>
+    <script>
+        AFRAME.registerComponent('smooth-rotation', {
+            init: function () {
+                var el = this.el;
+                var rotationStep = 0.5; // Adjust this value to control rotation speed
+
+                function rotate() {
+                    el.object3D.rotation.y += THREE.Math.degToRad(rotationStep);
+                    requestAnimationFrame(rotate);
+                }
+
+                rotate();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
