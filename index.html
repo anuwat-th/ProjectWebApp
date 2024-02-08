@@ -19,6 +19,11 @@
 
             <a-asset-item id="house" src="./asset/model1/scene.gltf"></a-asset-item>
             <a-asset-item id="elephant" src="./asset/elephant/scene.gltf"></a-asset-item>
+
+            <a-asset-item id="whiteTiger" src="./asset/whiteTiger/scene.gltf"></a-asset-item>
+
+
+            <a-asset-item id="tree" src="./asset/tree/scene.gltf"></a-asset-item>
         </a-assets>
 
         <!-- Background Sky -->
@@ -27,9 +32,11 @@
         <a-entity geometry="primitive: plane; height: 500; width: 500" position="0 0 0" rotation="-90 0 0"
             material="shader: flat; src: url(./asset/GrassPlane.jpg); repeat: 300 300"></a-entity>
 
-        <!-- Elephant-->
         <!-- 3D Model -->
         <a-entity gltf-model="#house" position="0 0.1 0"></a-entity>
+
+
+        <!-- Elephant-->
         <a-text value="Elephant" color="#FFFFFF" scale="2 2 2" align="center" rotation="0 -90 0"
             position="5 4 0"></a-text>
         <a-entity gltf-model="#elephant" scale="2 2 2" rotation="0 -90 0" position="5 0.2 0" smooth-rotation></a-entity>
@@ -42,7 +49,19 @@
 
         <!--Tiger-->
 
+        <a-text value="White Tiger" color="#FFFFFF" scale="2 2 2" align="center" rotation="0 -90 0"
+            position="5 4 10"></a-text>
+        <a-entity gltf-model="#whiteTiger" scale="0.015 0.015 0.015" rotation="0 -90 0" position="5 0.2 10" smooth-rotation></a-entity>
+        <a-cylinder position="6 0 10" scale="3 0.2 3" rotation="0 0 0" src="#plane1" smooth-rotation
+            animation-mixer="clip:Idle;"></a-cylinder>
+        <!-- Sound -->
+        <a-sound src="./asset/sound/whiteTiger.mp3" position="5 0.2 10" maxDistance="5" autoplay="true"
+            loop="true"></a-sound>
         
+
+        <!--Trees-->
+        <a-entity gltf-model="#tree" scale="2 2 2"  position="5 0.2 5" smooth-rotation></a-entity>
+
     </a-scene>
     <script>
         AFRAME.registerComponent('smooth-rotation', {
